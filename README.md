@@ -1,5 +1,13 @@
 # Enumerators
 
+## Objectives
+
+1. Become familiar with some enumerators
+2. Get comfortable reading the official Ruby documentation on enumerators
+3. Understand the difference between `.each` and `.collect`
+
+## Introduction
+
 [Enumerators](http://ruby-doc.org/core-2.1.3/Enumerable.html) allows for iterative actions on data structures, specifically in Ruby arrays and hashes.
 
 Enumerator methods can be called on hashes and arrays and take blocks as their argument, where the block is yielded to for every item in the array or hash. In other words, when we call:
