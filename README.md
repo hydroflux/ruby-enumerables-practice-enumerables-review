@@ -2,7 +2,22 @@
 
 [Enumerators](http://ruby-doc.org/core-2.1.3/Enumerable.html) allows for iterative actions on data structures, specifically in Ruby arrays and hashes.
 
-Enumerator methods can be called on hashes and arrays and take blocks as their argument, where the block is yielded to for every item in the array or hash.
+Enumerator methods can be called on hashes and arrays and take blocks as their argument, where the block is yielded to for every item in the array or hash. In other words, when we call:
+
+```ruby
+array = [1, 2, 3, 4]
+array.each do |num|
+  num * 2
+end
+```
+
+You can imagine it as: 
+```array.each(some code that gets executed on each member of the array)```
+
+The **block** is the code between the `do`, `end` syntax. You can also define a block with curly braces, `{}`. We'll be learning more about blocks in a later lesson. 
+
+There are many enumerators available to you in Ruby, below are just a few. Read more about them in the official Ruby documenation. 
+
 
 ## `.each`
 
@@ -92,3 +107,35 @@ even_nums(cool_nums)
 ```
 
 Take a look at the [Enumerable Module](http://ruby-doc.org/core-2.1.3/Enumerable.html) and read about the different methods available.
+
+## `.find`
+
+`.find` is very similar to `.select`, but instead of collecting and returning all of the items for which a condition is true, it returns the *first* item for which it is true.
+
+```ruby
+[1, 3, 5, 7].find do |num|
+  num.odd?
+end
+  => 1
+```
+
+## `.delete_if`
+
+`.delete_if`, on the other hand, will delete from the collection any items that return true for a certain condition:
+
+```ruby
+[1, 2, 4, 7].delete_if do |num|
+  num.odd?
+end
+
+  => [2, 4]
+``` 
+## `include?`
+
+You can use the `include?` method to determine if a collection contains a certain item. 
+
+```ruby
+[1, 2, 3].include?(1)
+  => true
+```
+
