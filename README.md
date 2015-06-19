@@ -10,19 +10,57 @@
 
 [Enumerators](http://ruby-doc.org/core-2.1.3/Enumerable.html) allows for iterative actions on data structures, specifically in Ruby arrays and hashes.
 
-Enumerator methods can be called on hashes and arrays and take blocks as their argument, where the block is yielded to for every item in the array or hash. In other words, when we call:
+Enumerator methods allow us to iterate over every member of a collection and *do something to each* member of that collection. 
+
+### Why do we need Enumerators?
+
+Let's revisit our earlier example of Professor Snape's list of Hogwarts students. Professor Snape is having a bad day and he'd like to vent some of that frustration by turning each of his students into a frog. He therefore needs to preform a certain action on each student. 
+
+Let's take a look at our student array: 
+
+`students = ["Harry Potter", "Ron Weasley", "Hermione Granger", "Draco Malfroy"]`
+
+Snape has written a method (okay, spell), that he needs to call on each student: `turn_into_frog`. 
 
 ```ruby
-array = [1, 2, 3, 4]
-array.each do |num|
-  num * 2
+def turn_into_frog(person)
+  puts "Poof! #{person} is a frog."
 end
 ```
 
-You can imagine it as: 
-```array.each(some code that gets executed on each member of the array)```
+Without enumerators, he'd have to do something like this: 
 
-The **block** is the code between the `do`, `end` syntax. You can also define a block with curly braces, `{}`. We'll be learning more about blocks in a later lesson. 
+```ruby
+turn_into_frog(students[0]) 
+turn_into_frog(students[1])
+turn_into_frog(students[2])
+...
+```
+
+This approach has a number of serious drawbacks: 
+
+* We are repeating ourselves on every line. 
+* We need to know exactly how many students are in the array in order to operate on each one––and this could change!
+* What if we have a long list of students? Maybe Snape had a *really* bad day and he wants to turn everyone in Hogwarts into a frog? It would take forever. 
+
+Let's take a look at the same task using an enumerator:
+
+```ruby
+students.each do |student|
+  turn_into_frog(student)
+end
+```
+
+This would successfully output: 
+
+```ruby
+"Poof! Harry Potter is a frog."
+"Poof! Ron Weasley is a frog."
+"Poof! Hermione Granger is a frog."
+...
+```
+
+We went from many lines of code requiring us to grab each student one at a time, to just a few lines of code using our `.each` enumerator. Much better. 
 
 There are many enumerators available to you in Ruby, below are just a few. Read more about them in the official Ruby documenation. 
 
@@ -48,6 +86,8 @@ change_nums(cool_nums)
 4
 #=> [1, 2, 3]
 ```
+
+You can see that we are moving over every element in the array and executing the code in the `do`, `end` block for each element. That is exactly how enumerators work––we call them on a collection (i.e. `array.each`), pass that method call a block (i.e. code in between the `do` and the `end`), and that code runs for every element in the collection. 
 
 ## `.collect`/`.map`
 
@@ -147,3 +187,6 @@ You can use the `include?` method to determine if a collection contains a certai
   => true
 ```
 
+## Resources 
+
+[Enumerators](http://ruby-doc.org/core-2.1.3/Enumerable.html)
