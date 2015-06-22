@@ -187,6 +187,12 @@ You can use the `include?` method to determine if a collection contains a certai
   => true
 ```
 
+## Helpful Tools
+
+As you move forward through this unit, you'll be required to use the above enumerable methods to complete labs and get rspec tests passing. Rely on the Ruby docs on Enumerators, linked to below, to help you. You can also use resources like Stack Overflow and good old fashioned googling to gain deeper understandings of how these methods work. Learning when and what to google is a valuable skill in programming, don't be afraid to use it. 
+
+Let's use an example. Say you are completing a lab that asks you to build a method that takes in an array as an argument and return the *first* item in the array that meets a certain condition. "Oh no!" you might think (having forgotten to refer back to this excellent Readme). But don't worry––a google query along the lines of "ruby method to return first item of collection that meets condition" is very likey to point you in the right direction. 
+
 ## Resources 
 
 [Enumerators](http://ruby-doc.org/core-2.1.3/Enumerable.html)
