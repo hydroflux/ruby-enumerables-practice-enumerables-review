@@ -1,8 +1,69 @@
 # Enumerators
 
+## Objectives
+
+1. Become familiar with some enumerators
+2. Get comfortable reading the official Ruby documentation on enumerators
+3. Understand the difference between `.each` and `.collect`
+
+## Introduction
+
 [Enumerators](http://ruby-doc.org/core-2.1.3/Enumerable.html) allows for iterative actions on data structures, specifically in Ruby arrays and hashes.
 
-Enumerator methods can be called on hashes and arrays and take blocks as their argument, where the block is yielded to for every item in the array or hash.
+Enumerator methods allow us to iterate over every member of a collection and *do something to each* member of that collection. 
+
+### Why do we need Enumerators?
+
+Let's revisit our earlier example of Professor Snape's list of Hogwarts students. Professor Snape is having a bad day and he'd like to vent some of that frustration by turning each of his students into a frog. He therefore needs to preform a certain action on each student. 
+
+Let's take a look at our student array: 
+
+`students = ["Harry Potter", "Ron Weasley", "Hermione Granger", "Draco Malfroy"]`
+
+Snape has written a method (okay, spell), that he needs to call on each student: `turn_into_frog`. 
+
+```ruby
+def turn_into_frog(person)
+  puts "Poof! #{person} is a frog."
+end
+```
+
+Without enumerators, he'd have to do something like this: 
+
+```ruby
+turn_into_frog(students[0]) 
+turn_into_frog(students[1])
+turn_into_frog(students[2])
+...
+```
+
+This approach has a number of serious drawbacks: 
+
+* We are repeating ourselves on every line. 
+* We need to know exactly how many students are in the array in order to operate on each one––and this could change!
+* What if we have a long list of students? Maybe Snape had a *really* bad day and he wants to turn everyone in Hogwarts into a frog? It would take forever. 
+
+Let's take a look at the same task using an enumerator:
+
+```ruby
+students.each do |student|
+  turn_into_frog(student)
+end
+```
+
+This would successfully output: 
+
+```ruby
+"Poof! Harry Potter is a frog."
+"Poof! Ron Weasley is a frog."
+"Poof! Hermione Granger is a frog."
+...
+```
+
+We went from many lines of code requiring us to grab each student one at a time, to just a few lines of code using our `.each` enumerator. Much better. 
+
+There are many enumerators available to you in Ruby, below are just a few. Read more about them in the official Ruby documenation. 
+
 
 ## `.each`
 
@@ -25,6 +86,8 @@ change_nums(cool_nums)
 4
 #=> [1, 2, 3]
 ```
+
+You can see that we are moving over every element in the array and executing the code in the `do`, `end` block for each element. That is exactly how enumerators work––we call them on a collection (i.e. `array.each`), pass that method call a block (i.e. code in between the `do` and the `end`), and that code runs for every element in the collection. 
 
 ## `.collect`/`.map`
 
@@ -92,3 +155,59 @@ even_nums(cool_nums)
 ```
 
 Take a look at the [Enumerable Module](http://ruby-doc.org/core-2.1.3/Enumerable.html) and read about the different methods available.
+
+## `.find`
+
+`.find` is very similar to `.select`, but instead of collecting and returning all of the items for which a condition is true, it returns the *first* item for which it is true.
+
+```ruby
+[1, 3, 5, 7].find do |num|
+  num.odd?
+end
+  => 1
+```
+
+## `.delete_if`
+
+`.delete_if`, on the other hand, will delete from the collection any items that return true for a certain condition:
+
+```ruby
+[1, 2, 4, 7].delete_if do |num|
+  num.odd?
+end
+
+  => [2, 4]
+``` 
+## `include?`
+
+You can use the `include?` method to determine if a collection contains a certain item. 
+
+```ruby
+[1, 2, 3].include?(1)
+  => true
+```
+
+## `.any?`
+
+Calling `.any?` on a collection will return `true` if the code in the block (code between `do`, `end` keywords or between `{ }`, curly braces) evaluates to true for *any* element in the collection. Let's take a look: 
+
+```ruby
+words = ["are", "any", "of", "these", "words", "longer", "than", "four", "letters"]
+
+words.any? do |word|
+  word.length > 4
+end
+  #=> true
+```
+
+The `.any?` method passes each element of the array it is called on to the code in between the `do`, `end` keywords. The length of each word gets compared to `4`. Since there are two words in this collection that are longer than four letters, this code: `word.length > 4` returned true for those two words. Therefore, the entire method call of `.any?` on the array will return `true`. 
+
+## Helpful Tools
+
+As you move forward through this unit, you'll be required to use the above enumerable methods to complete labs and get rspec tests passing. Rely on the Ruby docs on Enumerators, linked to below, to help you. You can also use resources like Stack Overflow and good old fashioned googling to gain deeper understandings of how these methods work. Learning when and what to google is a valuable skill in programming, don't be afraid to use it. 
+
+Let's use an example. Say you are completing a lab that asks you to build a method that takes in an array as an argument and return the *first* item in the array that meets a certain condition. "Oh no!" you might think (having forgotten to refer back to this excellent Readme). But don't worry––a google query along the lines of "ruby method to return first item of collection that meets condition" is very likey to point you in the right direction. 
+
+## Resources 
+
+[Enumerators](http://ruby-doc.org/core-2.1.3/Enumerable.html)
