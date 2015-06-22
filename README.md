@@ -187,6 +187,21 @@ You can use the `include?` method to determine if a collection contains a certai
   => true
 ```
 
+## `.any?`
+
+Calling `.any?` on a collection will return `true` if the code in the block (code between `do`, `end` keywords or between `{ }`, curly braces) evaluates to true for *any* element in the collection. Let's take a look: 
+
+```ruby
+words = ["are", "any", "of", "these", "words", "longer", "than", "four", "letters"]
+
+words.any? do |word|
+  word.length > 4
+end
+  #=> true
+```
+
+The `.any?` method passes each element of the array it is called on to the code in between the `do`, `end` keywords. The length of each word gets compared to `4`. Since there are two words in this collection that are longer than four letters, this code: `word.length > 4` returned true for those two words. Therefore, the entire method call of `.any?` on the array will return `true`. 
+
 ## Helpful Tools
 
 As you move forward through this unit, you'll be required to use the above enumerable methods to complete labs and get rspec tests passing. Rely on the Ruby docs on Enumerators, linked to below, to help you. You can also use resources like Stack Overflow and good old fashioned googling to gain deeper understandings of how these methods work. Learning when and what to google is a valuable skill in programming, don't be afraid to use it. 
