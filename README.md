@@ -2,33 +2,33 @@
 
 ## Objectives
 
-1. Become familiar with some enumerators
-2. Get comfortable reading the official Ruby documentation on enumerators
-3. Understand the difference between `.each` and `.collect`
+1. Become familiar with some enumerators.
+2. Get comfortable reading the official Ruby documentation on enumerators.
+3. Understand the difference between `.each` and `.collect`.
 
 ## Introduction
 
-[Enumerators](http://ruby-doc.org/core-2.1.3/Enumerable.html) allows for iterative actions on data structures, specifically in Ruby arrays and hashes.
+[Enumerators][enumerators] allow for iterative actions on data structures, specifically over arrays and hashes (which we'll discuss a little later).
 
 Enumerator methods allow us to iterate over every member of a collection and *do something to each* member of that collection. 
 
 ### Why do we need Enumerators?
 
-Let's revisit our earlier example of Professor Snape's list of Hogwarts students. Professor Snape is having a bad day and he'd like to vent some of that frustration by turning each of his students into a frog. He therefore needs to preform a certain action on each student. 
+Let's revisit our earlier example of Professor Snape's list of Hogwarts students. Professor Snape is having a bad day and he'd like to vent some of that frustration by turning each of his students into a frog. He therefore needs to perform a certain action on each student. 
 
 Let's take a look at our student array: 
 
 `students = ["Harry Potter", "Ron Weasley", "Hermione Granger", "Draco Malfroy"]`
 
-Snape has written a method (okay, spell), that he needs to call on each student: `turn_into_frog`. 
+Snape has written a method (okay, a spell) `turn_into_frog` that he needs to call on each student: 
 
 ```ruby
-def turn_into_frog(person)
-  puts "Poof! #{person} is a frog."
+def turn_into_frog(student)
+  puts "Poof! #{student} is a frog."
 end
 ```
 
-Without enumerators, he'd have to do something like this: 
+Without enumerators, Snape would have to call his method (cast his spell) once for every argument (student) that he wishes to perform it on (turn into a frog): 
 
 ```ruby
 turn_into_frog(students[0]) 
@@ -40,8 +40,8 @@ turn_into_frog(students[2])
 This approach has a number of serious drawbacks: 
 
 * We are repeating ourselves on every line. 
-* We need to know exactly how many students are in the array in order to operate on each one––and this could change!
-* What if we have a long list of students? Maybe Snape had a *really* bad day and he wants to turn everyone in Hogwarts into a frog? It would take forever. 
+* We need to know exactly how many students are in the array in order to operate on each and every one—and this could change!
+* What if we have a long list of students? Maybe Snape had a *really* bad day and he wants to turn everyone at Hogwarts into a frog! That would take *forever*. 
 
 Let's take a look at the same task using an enumerator:
 
@@ -60,14 +60,14 @@ This would successfully output:
 ...
 ```
 
-We went from many lines of code requiring us to grab each student one at a time, to just a few lines of code using our `.each` enumerator. Much better. 
+We went from many lines of code requiring us to grab each student one at a time, to just a few lines of code using our `.each` enumerator. Much better!
 
-There are many enumerators available to you in Ruby, below are just a few. Read more about them in the official Ruby documenation. 
+There are many enumerators available to you in Ruby, below are just a few. Read more about them in the official [Ruby documentation][enumerators]. 
 
 
 ## `.each`
 
-`.each` is a common enumerator method. The defining characteristic of it is that its return value is the original data structure it was called on. Whatever is happening within the block will be evaluated as well.
+`.each` is a common enumerator method. The defining characteristic of `.each` is that its return value is the original data structure that it was called upon. Whatever is happening within the block will be evaluated as well.
 
 Here's how `.each` works:
 
@@ -87,11 +87,11 @@ change_nums(cool_nums)
 #=> [1, 2, 3]
 ```
 
-You can see that we are moving over every element in the array and executing the code in the `do`, `end` block for each element. That is exactly how enumerators work––we call them on a collection (i.e. `array.each`), pass that method call a block (i.e. code in between the `do` and the `end`), and that code runs for every element in the collection. 
+You can see that we are moving over every element in the array and executing the code in the `do`...`end` block for each element. That is exactly how enumerators work—we call them on a collection (i.e. `array.each`), pass that method call a block (i.e. code in between the `do` and the `end`), and that code runs for every element in the collection. 
 
-## `.collect`/`.map`
+## `.collect` & `.map`
 
-`.collect` and `.map` are identical in functionality, and are similar to to `.each` with one distinct difference: when you call `.collect` or `.map` on an array or hash a new array or hash object is returned, **not** the original one.
+The `.collect` and `.map` methods are identical in functionality, and are similar to `.each` with one distinct difference: when you call `.collect` or `.map` on an array or hash a *new* array or hash object is returned, *not* the original one.
 
 Let's take a look:
 
@@ -117,7 +117,7 @@ cool_nums
 
 ## `.each` vs. `.collect`
 
-While the two are similar, there are times when it makes sense to use one over the other. If you need the return value of your method to be a collection that's been modified by what's happening within the block, then `.collect` is for you. Of course, it's quite possible to work with `.each` to accomplish that. One way is to make a new "placeholder" (array or hash) in memory and scope of the method, and then return that new placeholder as the last line of the method:
+While these two are similar, there are times when it makes sense to use one over the other. If you need the return value of your method to be a collection that's been modified by what's happening within the block, then `.collect` is for you. Of course, it's quite possible to work with `.each` to accomplish that. One way is to make a new "placeholder" (array or hash) in memory and scope of the method, and then return that new placeholder as the last line of the method:
 
 ```ruby
 cool_nums = [1, 2, 3]
@@ -139,10 +139,10 @@ But doesn't this code smell a little bit? It's a lot of lines to accomplish some
 
 ## `.select`
 
-`.select` returns all items in a collection (as a new collection object, like `.collect`) for which the block is true:
+The `.select` method returns new collection containing all of the elements in submitted collection for which the block's conditional is `true`:
 
 ```ruby
-cool_nums = [1, 2, 3]
+cool_nums = [1, 2, 3, 4, 5]
 
 def even_nums(nums)
   nums.select do |x|
@@ -151,14 +151,12 @@ def even_nums(nums)
 end
 
 even_nums(cool_nums)
-#=> [2]
+#=> [2, 4]
 ```
-
-Take a look at the [Enumerable Module](http://ruby-doc.org/core-2.1.3/Enumerable.html) and read about the different methods available.
 
 ## `.find`
 
-`.find` is very similar to `.select`, but instead of collecting and returning all of the items for which a condition is true, it returns the *first* item for which it is true.
+The `.find` method is very similar to `.select`, but instead of collecting and returning all of the items for which a condition is `true`, `.find` returns only the *first* item for which it is `true`.
 
 ```ruby
 [1, 3, 5, 7].find do |num|
@@ -169,7 +167,7 @@ end
 
 ## `.delete_if`
 
-`.delete_if`, on the other hand, will delete from the collection any items that return true for a certain condition:
+The `.delete_if` method, on the other hand, will delete from the collection any items that return `true` for a certain condition:
 
 ```ruby
 [1, 2, 4, 7].delete_if do |num|
@@ -178,18 +176,21 @@ end
 
   => [2, 4]
 ``` 
-## `include?`
+## `.include?`
 
-You can use the `include?` method to determine if a collection contains a certain item. 
+You can use the `.include?` method to determine if a collection contains a specific element. 
 
 ```ruby
 [1, 2, 3].include?(1)
   => true
+  
+[1, 2, 3].include?(4)
+  => false
 ```
 
 ## `.any?`
 
-Calling `.any?` on a collection will return `true` if the code in the block (code between `do`, `end` keywords or between `{ }`, curly braces) evaluates to true for *any* element in the collection. Let's take a look: 
+Calling `.any?` on a collection will return `true` if the code in the block (code between the `do`...`end` keywords or between the `{ }` "curly braces") evaluates to `true` for *any* element in the collection. Let's take a look: 
 
 ```ruby
 words = ["are", "any", "of", "these", "words", "longer", "than", "four", "letters"]
@@ -200,14 +201,16 @@ end
   #=> true
 ```
 
-The `.any?` method passes each element of the array it is called on to the code in between the `do`, `end` keywords. The length of each word gets compared to `4`. Since there are two words in this collection that are longer than four letters, this code: `word.length > 4` returned true for those two words. Therefore, the entire method call of `.any?` on the array will return `true`. 
+The `.any?` method passes each element of the array it is called on to the code in between the `do`...`end` keywords. The length of each word gets compared to `4`. Since there are two words in this collection that are longer than four letters, the line containing `word.length > 4` returned `true` for those two words. Therefore, the entire method call of `.any?` on the array will return `true`. 
 
 ## Helpful Tools
 
-As you move forward through this unit, you'll be required to use the above enumerable methods to complete labs and get rspec tests passing. Rely on the Ruby docs on Enumerators, linked to below, to help you. You can also use resources like Stack Overflow and good old fashioned googling to gain deeper understandings of how these methods work. Learning when and what to google is a valuable skill in programming, don't be afraid to use it. 
+As you move forward through this unit, you'll be required to use the above enumerable methods to complete labs and get RSpec tests passing. Rely on the [Ruby Docs on Enumerators][enumerators] to help you. You can also use resources like Stack Overflow and good old fashioned googling to gain deeper understandings of how these methods work. Learning when and what to google is a valuable skill in programming, don't be afraid to use it. 
 
-Let's use an example. Say you are completing a lab that asks you to build a method that takes in an array as an argument and return the *first* item in the array that meets a certain condition. "Oh no!" you might think (having forgotten to refer back to this excellent Readme). But don't worry––a google query along the lines of "ruby method to return first item of collection that meets condition" is very likey to point you in the right direction. 
+Let's use an example. Say you are completing a lab that asks you to build a method that takes in an array as an argument and return the *first* item in the array that meets a certain condition. "Oh no!" you might think (having forgotten to refer back to this excellent Readme). But don't worry—googling something along the lines of "ruby method to return first item of collection that meets condition" is very likey to point you in the right direction. Go ahead and try it!
 
 ## Resources 
 
-[Enumerators](http://ruby-doc.org/core-2.1.3/Enumerable.html)
+* [Ruby Docs - Enumerators][enumerators]
+
+[enumerators]: http://ruby-doc.org/core-2.2.2/Enumerable.html)
