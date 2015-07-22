@@ -8,7 +8,9 @@
 
 ## Introduction
 
-[Enumerators][enumerators] allow for iterative actions on data structures, specifically over arrays and hashes (which we'll discuss a little later).
+[Enumerators][enumerators] allow for iterative actions on data structures, specifically over arrays and hashes*
+
+*A **hash** is another type of collection. It stores data in associated pairs, much like a dictionary stores a collection of words and their definitions. We'll be discussing hashes later on. For now, just keep in mind that all of the methods discussed here can be used on both arrays, and hashes. 
 
 Enumerator methods allow us to iterate over every member of a collection and *do something to each* member of that collection. 
 
@@ -117,7 +119,7 @@ cool_nums
 
 ## `.each` vs. `.collect`
 
-While these two are similar, there are times when it makes sense to use one over the other. If you need the return value of your method to be a collection that's been modified by what's happening within the block, then `.collect` is for you. Of course, it's quite possible to work with `.each` to accomplish that. One way is to make a new "placeholder" (array or hash) in memory and scope of the method, and then return that new placeholder as the last line of the method:
+While these two are similar, there are times when it makes sense to use one over the other. If you need the return value of your method to be a collection that's been modified by what's happening within the block, then `.collect` is for you. Of course, it's quite possible to work with `.each` to accomplish that. One way is to make a new "placeholder" (array or hash) in memory and within the method definition, and then return that new placeholder as the last line of the method:
 
 ```ruby
 cool_nums = [1, 2, 3]
