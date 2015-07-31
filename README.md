@@ -64,7 +64,7 @@ This would successfully output:
 
 We went from many lines of code requiring us to grab each student one at a time, to just a few lines of code using our `.each` enumerator. Much better!
 
-There are many enumerators available to you in Ruby, below are just a few. Read more about them in the official [Ruby documentation][enumerators]. 
+There are many enumerators available to you in Ruby, below are just a few. Read more about them in the official [Ruby documentation](http://ruby-doc.org/core-2.2.2/Enumerable.html). 
 
 
 ## `.each`
