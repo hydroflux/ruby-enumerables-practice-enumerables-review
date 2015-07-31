@@ -8,9 +8,9 @@
 
 ## Introduction
 
-[Enumerators][enumerators] allow for iterative actions on data structures, specifically over arrays and hashes*
+[Enumerators][enumerators] allow for iterative actions on data structures, specifically over arrays and hashes.
 
-*A **hash** is another type of collection. It stores data in associated pairs, much like a dictionary stores a collection of words and their definitions. We'll be discussing hashes later on. For now, just keep in mind that all of the methods discussed here can be used on both arrays, and hashes. 
+A **hash** is another type of collection. It stores data in associated pairs, much like a dictionary stores a collection of words and their definitions. We'll be discussing hashes later on. For now, just keep in mind that all of the methods discussed here can be used on both arrays, and hashes. 
 
 Enumerator methods allow us to iterate over every member of a collection and *do something to each* member of that collection. 
 
