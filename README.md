@@ -141,7 +141,7 @@ But doesn't this code smell a little bit? It's a lot of lines to accomplish some
 
 ## `.select`
 
-The `.select` method returns new collection containing all of the elements in submitted collection for which the block's conditional is `true`:
+The `.select` method returns a new collection containing all of the elements in the submitted collection for which the block's conditional is `true`:
 
 ```ruby
 cool_nums = [1, 2, 3, 4, 5]
