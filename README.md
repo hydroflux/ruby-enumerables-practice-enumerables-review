@@ -214,3 +214,5 @@ Let's use an example. Say you are completing a lab that asks you to build a meth
 ## Resources 
 
 * [Ruby Docs - Enumerators](http://ruby-doc.org/core-2.2.2/Enumerable.html)
+
+<a href='https://learn.co/lessons/enumerators-readme' data-visibility='hidden'>View this lesson on Learn.co</a>
