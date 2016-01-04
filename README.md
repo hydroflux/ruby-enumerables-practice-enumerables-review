@@ -209,10 +209,8 @@ The `.any?` method passes each element of the array it is called on to the code 
 
 As you move forward through this unit, you'll be required to use the above enumerable methods to complete labs and get RSpec tests passing. Rely on the [Ruby Docs on Enumerators](http://ruby-doc.org/core-2.2.2/Enumerable.html) to help you. You can also use resources like Stack Overflow and good old fashioned googling to gain deeper understandings of how these methods work. Learning when and what to google is a valuable skill in programming, don't be afraid to use it. 
 
-Let's use an example. Say you are completing a lab that asks you to build a method that takes in an array as an argument and return the *first* item in the array that meets a certain condition. "Oh no!" you might think (having forgotten to refer back to this excellent Readme). But don't worry—googling something along the lines of "ruby method to return first item of collection that meets condition" is very likey to point you in the right direction. Go ahead and try it!
+Let's use an example. Say you are completing a lab that asks you to build a method that takes in an array as an argument and return the *first* item in the array that meets a certain condition. "Oh no!" you might think (having forgotten to refer back to this excellent Readme). But don't worry—googling something along the lines of "ruby method to return first item of collection that meets condition" is very likely to point you in the right direction. Go ahead and try it!
 
 ## Resources 
 
 * [Ruby Docs - Enumerators](http://ruby-doc.org/core-2.2.2/Enumerable.html)
-
-<a href='https://learn.co/lessons/enumerators-readme' data-visibility='hidden'>View this lesson on Learn.co</a>
