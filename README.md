@@ -89,7 +89,7 @@ change_nums(cool_nums)
 #=> [1, 2, 3]
 ```
 
-You can see that we are moving over every element in the array and executing the code in the `do`...`end` block for each element. That is exactly how enumerators work—we call them on a collection (i.e. `array.each`), pass that method call a block (i.e. code in between the `do` and the `end`), and that code runs for every element in the collection. 
+You can see that we are moving over every element in the array and executing the code in the `do`...`end` block for each element. That is exactly how enumerators work &mdash; we call them on a collection (i.e. `array.each`), pass that method call a block (i.e. code in between the `do` and the `end`), and that code passes each element into the block as a block argument.
 
 ## `.collect` & `.map`
 
