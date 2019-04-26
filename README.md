@@ -20,7 +20,7 @@ Let's revisit our earlier example of Professor Snape's list of Hogwarts students
 
 Let's take a look at our student array: 
 
-`students = ["Harry Potter", "Ron Weasley", "Hermione Granger", "Draco Malfroy"]`
+`students = ["Harry Potter", "Ron Weasley", "Hermione Granger", "Draco Malfoy"]`
 
 Snape has written a method (okay, a spell) `turn_into_frog` that he needs to call on each student: 
 
